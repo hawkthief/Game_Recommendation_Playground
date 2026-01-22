@@ -11,135 +11,45 @@ users = {
     
     # ----- Archetype users -----
     "The Tryhard": {
-        "mechanical_depth": 0.9,
-        "strategic_depth": 0.8,
-        "reflex_focus": 1.0,
-        "difficulty": 0.7,
-        "systemic_complexity": 0.6,
+        "mechanical_depth": {"min": 0.5, "target": 0.9, "weight": 1.0},
+        "strategic_depth":  {"min": 0.5, "target": 0.8, "weight": 0.9},
+        "reflex_focus":     {"min": 0.5, "target": 1.0, "weight": 1.0},
+        "difficulty":       {"min": 0.5, "target": 0.7, "weight": 0.7},
+        "systemic_complexity": {"target": 0.6, "weight": 0.5},
     },
 
     "The Intellectual": {
-        "strategic_depth": 0.9,
-        "build_variety": 0.8,
-        "systemic_complexity": 1.0,
+        "strategic_depth":      {"min": 0.7, "target": 0.9, "weight": 1.0},
+        "build_variety":        {"target": 0.8, "weight": 0.8},
+        "systemic_complexity":  {"min": 0.7, "target": 1.0, "weight": 1.0},
     },
 
     "The Casual": {
-        "mechanical_depth": 0.5,
-        "strategic_depth": 0.5,
-        "difficulty": 0.4,
-        "punishment": 0.4,
-        "replayability": 0.8,
-        "systemic_complexity": 0.3,
+        "difficulty":          {"max": 0.5, "target": 0.4, "weight": 1.0},
+        "punishment":          {"max": 0.5, "target": 0.4, "weight": 0.9},
+        "mechanical_depth":    {"target": 0.5, "weight": 0.5},
+        "strategic_depth":     {"target": 0.5, "weight": 0.4},
+        "replayability":       {"min": 0.6, "target": 0.8, "weight": 0.6},
+        "systemic_complexity": {"max": 0.5, "target": 0.3, "weight": 0.8},
     },
 
     "The Explorer": {
-        "narrative_importance": 0.6,
-        "player_agency": 0.7,
-        "worldbuilding": 0.8,
-        "openness": 1.0,
-    },
-
-    "The Completionist": {
-        "replayability": 0.9,
-        "build_variety": 0.8,
-        "openness": 0.7,
-        "player_agency": 0.7,
-        "systemic_complexity": 0.6,
-        "grindiness": 0.6,
-        "progression_speed": 0.4,
-        "narrative_importance": 0.5,
+        "narrative_importance": {"min": 0.5, "target": 0.6, "weight": 0.7},
+        "player_agency":        {"min": 0.6, "target": 0.7, "weight": 0.8},
+        "worldbuilding":        {"min": 0.7, "target": 0.8, "weight": 1.0},
+        "openness":             {"min": 0.7, "target": 1.0, "weight": 0.9},
     },
 
     "The Story Devotee": {
-        "narrative_importance": 1.0,
-        "drama": 0.9,
-        "worldbuilding": 0.9,
-        "player_agency": 0.7,
-        "mechanical_depth": 0.2,
-        "reflex_focus": 0.1,
-        "replayability": 0.3,
-    },
+        "narrative_importance": {"min": 0.8, "target": 1.0, "weight": 1.0},
+        "drama":                {"min": 0.7, "target": 0.9, "weight": 0.9},
+        "worldbuilding":        {"min": 0.7, "target": 0.9, "weight": 0.9},
+        "player_agency":        {"target": 0.7, "weight": 0.6},
 
-    "The Systems Engineer": {
-        "systemic_complexity": 1.0,
-        "strategic_depth": 0.9,
-        "build_variety": 0.8,
-        "mechanical_depth": 0.6,
-        "narrative_importance": 0.2,
-        "drama": 0.1,
-    },
-
-    "The Adrenaline Seeker": {
-        "reflex_focus": 1.0,
-        "difficulty": 0.6,
-        "punishment": 0.5,
-        "mechanical_depth": 0.6,
-        "narrative_importance": 0.2,
-        "replayability": 0.7,
-    },
-
-    "The Comfort Gamer": {
-        "difficulty": 0.2,
-        "punishment": 0.2,
-        "comedy": 0.6,
-        "narrative_importance": 0.5,
-        "progression_speed": 0.6,
-        "systemic_complexity": 0.3,
-    },
-
-    # ----- Dense / semi-random users -----
-    "Dense Hybrid 1": {
-        "mechanical_depth": 0.7,
-        "strategic_depth": 0.6,
-        "reflex_focus": 0.5,
-        "narrative_importance": 0.6,
-        "drama": 0.7,
-        "darkness": 0.4,
-        "punishment": 0.5,
-        "replayability": 0.6,
-        "systemic_complexity": 0.6,
-    },
-
-    "Dense Hybrid 2": {
-        "strategic_depth": 0.8,
-        "build_variety": 0.7,
-        "openness": 0.6,
-        "player_agency": 0.8,
-        "worldbuilding": 0.7,
-        "mechanical_depth": 0.4,
-        "difficulty": 0.5,
-    },
-
-    "Dense Hybrid 3": {
-        "reflex_focus": 0.8,
-        "difficulty": 0.7,
-        "punishment": 0.6,
-        "mechanical_depth": 0.7,
-        "narrative_importance": 0.3,
-        "comedy": 0.2,
-        "replayability": 0.8,
-    },
-
-    "Dense Hybrid 4": {
-        "narrative_importance": 0.7,
-        "drama": 0.8,
-        "darkness": 0.6,
-        "player_agency": 0.5,
-        "systemic_complexity": 0.4,
-        "mechanical_depth": 0.4,
-        "difficulty": 0.4,
-    },
-
-    "Dense Hybrid 5": {
-        "mechanical_depth": 0.3,
-        "strategic_depth": 0.9,
-        "reflex_focus": 0.2,
-        "systemic_complexity": 0.8,
-        "narrative_importance": 0.6,
-        "comedy": 0.5,
-        "punishment": 0.4,
-        "openness": 0.5,
+        # explicit exclusions — Hollow Knight
+        "mechanical_depth":     {"max": 0.4, "target": 0.2, "weight": 0.8},
+        "reflex_focus":         {"max": 0.3, "target": 0.1, "weight": 0.9},
+        "replayability":        {"max": 0.5, "target": 0.3, "weight": 0.4},
     },
 }
 
@@ -160,119 +70,143 @@ similarity = cosine_similarity(X, X)
 # Wrap in DataFrame for readability
 sim_df = pd.DataFrame(similarity, index=game_names, columns=game_names)
 
-# Important: standardize features
-scaler = StandardScaler()
-X_scaled = scaler.fit_transform(features)
+def plot_space():
+    # Important: standardize features
+    scaler = StandardScaler()
+    X_scaled = scaler.fit_transform(features)
 
-# PCA to 2 dimensions
-pca = PCA(n_components=2)
-X_pca = pca.fit_transform(X_scaled)
+    # PCA to 2 dimensions
+    pca = PCA(n_components=2)
+    X_pca = pca.fit_transform(X_scaled)
 
-# Plot
-plt.figure(figsize=(8, 6))
-plt.scatter(X_pca[:, 0], X_pca[:, 1])
 
-for i, name in enumerate(game_names):
-    plt.text(X_pca[i, 0] + 0.01, X_pca[i, 1] + 0.01, name, fontsize=9)
+    # Plot
+    plt.figure(figsize=(8, 6))
+    plt.scatter(X_pca[:, 0], X_pca[:, 1])
 
-plt.xlabel("PC1")
-plt.ylabel("PC2")
-plt.title("Game Feature Space (PCA)")
+    for i, name in enumerate(game_names):
+        plt.text(X_pca[i, 0] + 0.01, X_pca[i, 1] + 0.01, name, fontsize=9)
+
+    plt.xlabel("PC1")
+    plt.ylabel("PC2")
+    plt.title("Game Feature Space (PCA)")
+
+    plt.show()
 
 def most_similar(game_name, top_n=5):
     sims = sim_df.loc[game_name].sort_values(ascending=False)
     return sims.iloc[1:top_n+1]  # skip self
 
-def masked_similarity(user_vec, game_vec):
-    # mask where user has expressed a preference
-    mask = ~np.isnan(user_vec)
+def unpack_user_model(user_model):
+    user_pref = {}
+    constraints = {}
+    weights = {}
 
-    if mask.sum() == 0:
-        return np.nan  # user has no preferences at all
+    for feature, spec in user_model.items():
+        if "target" in spec:
+            user_pref[feature] = spec["target"]
 
-    u = user_vec[mask]
-    g = game_vec[mask]
+        if "min" in spec or "max" in spec:
+            constraints[feature] = (
+                spec.get("min", None),
+                spec.get("max", None),
+            )
 
-    if norm(u) == 0 or norm(g) == 0:
-        return 0.0
+        if "weight" in spec:
+            weights[feature] = spec["weight"]
 
-    return np.dot(u, g) / (norm(u) * norm(g))
+    return user_pref, constraints, weights
 
-def dominant_axis_filter(user_vec, game_df, top_k_axes=2, percentile=0.6):
-    # user_vec is a pandas Series
-    expressed = user_vec.dropna()
+def apply_constraints(games_df, constraints):
+    mask = pd.Series(True, index=games_df.index)
 
-    if expressed.empty:
-        return game_df
+    for feature, (min_v, max_v) in constraints.items():
+        if feature not in games_df.columns:
+            raise ValueError(f"Constraint feature missing: {feature}")
 
-    # pick top-k user axes
-    dominant_axes = expressed.sort_values(ascending=False).head(top_k_axes).index
+        col = games_df[feature]
 
-    # keep games strong in at least one dominant axis
-    mask = pd.Series(False, index=game_df.index)
+        # missing value = violation
+        if min_v is not None:
+            mask &= col.notna() & (col >= min_v)
 
-    for axis in dominant_axes:
-        if axis in game_df.columns:
-            threshold = game_df[axis].quantile(percentile)
-            mask |= game_df[axis] >= threshold
+        if max_v is not None:
+            mask &= col.notna() & (col <= max_v)
 
-    return game_df[mask]
+    return games_df[mask]
 
-def recommend_games_for_user(user_name, user_df, game_df, top_n=5):
-    user_vec = user_df.loc[user_name].values
+def weighted_masked_similarity(user_pref, game_row, weights):
+    num = 0.0
+    denom_user = 0.0
+    denom_game = 0.0
 
-    scores = {}
-    for game in game_df.index:
-        game_name = game_df.loc[game].values[0]  # Extract the game name from the first element
-        game_vec = game_df.loc[game].values[1:]  # Skip the first element (game name)
-        score = masked_similarity(user_vec, game_vec)
-        scores[game_name] = score
+    for feature, target in user_pref.items():
+        if feature not in game_row:
+            continue
+        if np.isnan(game_row[feature]):
+            continue
 
-    return (
-        pd.Series(scores)
-        .dropna()
-        .sort_values(ascending=False)
-        .head(top_n)
-    )
+        w = weights.get(feature, 1.0)
+        gv = game_row[feature]
 
-def recommend_games_two_step(
-    user_name,
-    user_df,
-    game_df,
-    top_n=5,
-    top_k_axes=2,
-    percentile=0.6
+        num += w * target * gv
+        denom_user += w * target * target
+        denom_game += w * gv * gv
+
+    if denom_user == 0 or denom_game == 0:
+        return np.nan
+
+    return num / (np.sqrt(denom_user) * np.sqrt(denom_game))
+
+def recommend_games(
+    user_pref,
+    game_features,
+    game_names,
+    constraints=None,
+    weights=None,
+    top_n=5
 ):
-    user_vec = user_df.loc[user_name]
+    df = game_features.copy()
 
-    # Step 1: focus
-    filtered_games = dominant_axis_filter(
-        user_vec,
-        game_df,
-        top_k_axes=top_k_axes,
-        percentile=percentile
-    )
+    if constraints:
+        df = apply_constraints(df, constraints)
 
-    # Step 2: rank
-    scores = {}
-    for game in filtered_games.index:
-        game_name = game_df.loc[game].values[0]  # Extract the game name from the first element
-        game_vec = game_df.loc[game].values[1:]
-        score = masked_similarity(user_vec, game_vec)
-        scores[game_name] = score
+    scores = []
+
+    for name, game_row in df.iterrows():
+        score = weighted_masked_similarity(
+            user_pref,
+            game_row,
+            weights or {}
+        )
+        if not np.isnan(score):
+            scores.append((game_names[name], score))
 
     return (
-        pd.Series(scores)
-        .dropna()
-        .sort_values(ascending=False)
+        pd.DataFrame(scores, columns=["game", "similarity"])
+        .set_index("game")
+        .sort_values("similarity", ascending=False)
         .head(top_n)
+    )
+
+def generate_rec(user):
+    user_pref, constraints, weights = unpack_user_model(user)
+
+    return recommend_games(
+        user_pref=user_pref,
+        game_features=features,
+        game_names=game_names,
+        constraints=constraints,
+        weights=weights,
+        top_n=5
     )
 
 # ----- "Main" -----
 game = "Guilty Gear Strive"
-gamer = "The Tryhard"
 
-#plt.show()
+user_model = users["The Tryhard"]
+
+#plot_space()
 #print(most_similar(game))
-#print(title+"\n",recommend_games_for_user(gamer, user_df, df))
-#print(title+"\n",recommend_games_two_step(gamer, user_df, df))
+print(generate_rec(user_model))
+
