@@ -1,4 +1,4 @@
-import pandas as pd
+﻿import pandas as pd
 import numpy as np
 from numpy.linalg import norm
 import matplotlib.pyplot as plt
@@ -11,52 +11,57 @@ users = {
     
     # ----- Archetype users -----
     "The Tryhard": {
-        "mechanical_depth": {"min": 0.5, "target": 0.9, "weight": 1.0},
-        "strategic_depth":  {"min": 0.5, "target": 0.8, "weight": 0.9},
-        "reflex_focus":     {"min": 0.5, "target": 1.0, "weight": 1.0},
-        "difficulty":       {"min": 0.5, "target": 0.7, "weight": 0.7},
-        "systemic_complexity": {"target": 0.6, "weight": 0.5},
+        "mechanical_depth": {"min": 0.5, "target": 0.9, "weight": 1.0, "mode": "at_least"},
+        "strategic_depth":  {"min": 0.5, "target": 0.8, "weight": 0.8, "mode": "at_least"},
+        "reflex_focus":     {"min": 0.5, "target": 1.0, "weight": 1.0, "mode": "symmetric"},
+        "difficulty":       {"min": 0.4, "target": 0.7, "weight": 0.8, "mode": "symmetric"},
+        "systemic_complexity": {"target": 0.6, "weight": 0.6, "mode": "symmetric"},
     },
 
     "The Intellectual": {
-        "strategic_depth":      {"min": 0.7, "target": 0.9, "weight": 1.0},
-        "build_variety":        {"target": 0.8, "weight": 0.8},
-        "systemic_complexity":  {"min": 0.7, "target": 1.0, "weight": 1.0},
+        "strategic_depth":      {"min": 0.5, "target": 0.9, "weight": 1.0, "mode": "at_least"},
+        "build_variety":        {"target": 0.7, "weight": 0.8, "mode": "at_least"},
+        "systemic_complexity":  {"min": 0.3, "target": 1.0, "weight": 1.0, "mode": "symmetric"},
+        "narrative_complexity":  {"min": 0.5, "target": 0.8, "weight": 0.6, "mode": "symmetric"},
+        "reflex_focus":     {"max": 0.6, "target": 0.2, "weight": 0.8, "mode": "symmetric"},
     },
 
     "The Casual": {
-        "difficulty":          {"max": 0.5, "target": 0.4, "weight": 1.0},
-        "punishment":          {"max": 0.5, "target": 0.4, "weight": 0.9},
-        "mechanical_depth":    {"target": 0.5, "weight": 0.5},
-        "strategic_depth":     {"target": 0.5, "weight": 0.4},
-        "replayability":       {"min": 0.6, "target": 0.8, "weight": 0.6},
-        "systemic_complexity": {"max": 0.5, "target": 0.3, "weight": 0.8},
+        "difficulty":          {"max": 0.5, "target": 0.4, "weight": 0.8, "mode": "at_most"},
+        "setback":          {"max": 0.5, "target": 0.3, "weight": 1.0, "mode": "at_most"},
+        "mechanical_depth":    {"target": 0.5, "weight": 0.5, "mode": "at_most"},
+        "strategic_depth":     {"target": 0.5, "weight": 0.4, "mode": "at_most"},
+        "replayability":       {"min": 0.3, "target": 0.8, "weight": 0.4, "mode": "at_least"},
+        "systemic_complexity": {"max": 0.5, "target": 0.3, "weight": 0.8, "mode": "at_most"},
     },
 
     "The Explorer": {
-        "narrative_importance": {"min": 0.5, "target": 0.6, "weight": 0.7},
-        "player_agency":        {"min": 0.6, "target": 0.7, "weight": 0.8},
-        "worldbuilding":        {"min": 0.7, "target": 0.8, "weight": 1.0},
-        "openness":             {"min": 0.7, "target": 1.0, "weight": 0.9},
+        "narrative_importance": {"min": 0.4, "target": 0.6, "weight": 0.6, "mode": "at_least"},
+        "player_agency":        {"min": 0.6, "target": 0.7, "weight": 0.8, "mode": "at_least"},
+        "worldbuilding":        {"min": 0.5, "target": 0.8, "weight": 1.0, "mode": "at_least"},
+        "openness":             {"min": 0.7, "target": 1.0, "weight": 0.9, "mode": "at_least"},
     },
 
     "The Story Devotee": {
-        "narrative_importance": {"min": 0.8, "target": 1.0, "weight": 1.0},
-        "drama":                {"min": 0.7, "target": 0.9, "weight": 0.9},
-        "worldbuilding":        {"min": 0.7, "target": 0.9, "weight": 0.9},
-        "player_agency":        {"target": 0.7, "weight": 0.6},
+        "narrative_importance": {"min": 0.8, "target": 1.0, "weight": 1.0, "mode": "at_least"},
+        "drama":                {"min": 0.7, "target": 0.9, "weight": 0.9, "mode": "at_least"},
+        "worldbuilding":        {"min": 0.7, "target": 0.9, "weight": 0.9, "mode": "at_least"},
+        "player_agency":        {"target": 0.7, "weight": 0.6, "mode": "at_least"},
 
-        # explicit exclusions � Hollow Knight
-        "mechanical_depth":     {"max": 0.4, "target": 0.2, "weight": 0.8},
-        "reflex_focus":         {"max": 0.3, "target": 0.1, "weight": 0.9},
-        "replayability":        {"max": 0.5, "target": 0.3, "weight": 0.4},
+        # explicit exclusions
+        "replayability":        {"max": 0.7, "target": 0.3, "weight": 0.4, "mode": "at_most"},
+    },
+
+    "The Horror Fan": {
+        "darkness": {"min": 0.6, "target": 0.8, "weight": 1.0, "mode": "at_least"},
+        "hostility":                {"min": 0.7, "target": 0.9, "weight": 0.9, "mode": "at_least"},
     },
 }
 
 user_df = pd.DataFrame.from_dict(users, orient="index")
 
 # Load data
-df = pd.read_csv("games.csv")
+df = pd.read_csv("games.csv", delimiter=";")
 
 # Separate names and features
 game_names = df["name"]
@@ -69,6 +74,157 @@ similarity = cosine_similarity(X, X)
 
 # Wrap in DataFrame for readability
 sim_df = pd.DataFrame(similarity, index=game_names, columns=game_names)
+
+def most_similar(game_name, top_n=5):
+    sims = sim_df.loc[game_name].sort_values(ascending=False)
+    return sims.iloc[1:top_n+1]  # skip self
+
+def penalized_distance(user_spec, game_row, epsilon=0.05, alpha=3.0):
+    total = 0.0
+
+    for f, rules in user_spec.items():
+        if "target" not in rules or "weight" not in rules:
+            continue
+        if f not in game_row or np.isnan(game_row[f]):
+            continue
+
+        g = game_row[f]
+        t = rules["target"]
+        w = rules["weight"]
+        mode = rules.get("mode", "symmetric")
+
+        delta = directional_delta(g, t, mode)
+        severity = violation_severity(delta, epsilon)
+        w_eff = inflated_weight(w, severity, alpha)
+
+        total += w_eff * severity**2
+
+    return total
+
+def l1_distance(user_spec, game_row):
+    total = 0.0
+
+    for f, rules in user_spec.items():
+        if "target" not in rules or "weight" not in rules:
+            continue
+        if f not in game_row or np.isnan(game_row[f]):
+            continue
+
+        total += rules["weight"] * abs(game_row[f] - rules["target"])
+
+    return total
+
+def l2_distance(user_spec, game_row):
+    total = 0.0
+
+    for f, rules in user_spec.items():
+        if "target" not in rules or "weight" not in rules:
+            continue
+        if f not in game_row or np.isnan(game_row[f]):
+            continue
+
+        total += rules["weight"] * (game_row[f] - rules["target"]) ** 2
+
+    return np.sqrt(total)
+
+def penalized_contributions(user_spec, game_row, epsilon=0.05):
+    contribs = {}
+
+    for f, rules in user_spec.items():
+        if "target" not in rules or "weight" not in rules:
+            continue
+        if f not in game_row or np.isnan(game_row[f]):
+            continue
+
+        t = rules["target"]
+        g = game_row[f]
+        w = rules["weight"]
+
+        delta = abs(g - t)
+        if delta > epsilon:
+            contribs[f] = w * (delta - epsilon) ** 2
+        else:
+            contribs[f] = 0.0
+
+    return contribs
+
+def l1_contributions(user_spec, game_row):
+    contribs = {}
+
+    for f, rules in user_spec.items():
+        if "target" not in rules or "weight" not in rules:
+            continue
+        if f not in game_row or np.isnan(game_row[f]):
+            continue
+
+        contribs[f] = rules["weight"] * abs(game_row[f] - rules["target"])
+
+    return contribs
+
+
+def l2_contributions(user_spec, game_row):
+    contribs = {}
+
+    for f, rules in user_spec.items():
+        if "target" not in rules or "weight" not in rules:
+            continue
+        if f not in game_row or np.isnan(game_row[f]):
+            continue
+
+        contribs[f] = rules["weight"] * (game_row[f] - rules["target"]) ** 2
+
+    return contribs
+
+def recommend_games(
+    user_pref,
+    game_features,
+    game_names,
+    constraints=None,
+    weights=None,
+    top_n=5
+):
+    games_df = game_features.copy()
+    user_axes = user_pref.keys()
+    rows = []
+
+    for idx, row in games_df.iterrows():
+        if violates_hard_constraints(user_pref, row):
+            continue
+        
+        rows.append({
+            "game": game_names[idx],
+            "penalized": penalized_distance(user_pref, row),
+            "l1": l1_distance(user_pref, row),
+            "l2": l2_distance(user_pref, row),
+        })
+
+    res = pd.DataFrame(rows).set_index("game").sort_values(by="penalized", ascending=False).head(top_n)
+    return res
+
+def violates_hard_constraints(user_spec, game_row):
+    for f, rules in user_spec.items():
+        g = game_row.get(f, np.nan)
+
+        if "min" in rules and g < rules["min"]:
+            return True
+        if "max" in rules and g > rules["max"]:
+            return True
+
+    return False
+
+def directional_delta(g, t, mode):
+    if mode == "symmetric":
+        return abs(g - t)
+    elif mode == "at_most":
+        return max(0, t - g)
+    elif mode == "at_least":
+        return max(0, g - t)
+
+def violation_severity(delta, epsilon):
+    return max(0, delta - epsilon)
+
+def inflated_weight(w, severity, alpha=3.0):
+    return w * np.exp(alpha * severity)
 
 def plot_space():
     # Important: standardize features
@@ -93,120 +249,89 @@ def plot_space():
 
     plt.show()
 
-def most_similar(game_name, top_n=5):
-    sims = sim_df.loc[game_name].sort_values(ascending=False)
-    return sims.iloc[1:top_n+1]  # skip self
+def normalize(df):
+    return (df - df.min()) / (df.max() - df.min())
 
-def unpack_user_model(user_model):
-    user_pref = {}
-    constraints = {}
-    weights = {}
+def plot_disagreement():
+    scores = recommend_games(user_pref=user_model, game_features=features, game_names=game_names, top_n=5)
+    scores_norm = normalize(scores)
+    # ----- "Metric vs Metric" -----
+    plt.figure(figsize=(6,6))
+    plt.scatter(scores_norm["l1"], scores_norm["l2"])
 
-    for feature, spec in user_model.items():
-        if "target" in spec:
-            user_pref[feature] = spec["target"]
-
-        if "min" in spec or "max" in spec:
-            constraints[feature] = (
-                spec.get("min", None),
-                spec.get("max", None),
-            )
-
-        if "weight" in spec:
-            weights[feature] = spec["weight"]
-
-    return user_pref, constraints, weights
-
-def apply_constraints(games_df, constraints):
-    mask = pd.Series(True, index=games_df.index)
-
-    for feature, (min_v, max_v) in constraints.items():
-        if feature not in games_df.columns:
-            raise ValueError(f"Constraint feature missing: {feature}")
-
-        col = games_df[feature]
-
-        # missing value = violation
-        if min_v is not None:
-            mask &= col.notna() & (col >= min_v)
-
-        if max_v is not None:
-            mask &= col.notna() & (col <= max_v)
-
-    return games_df[mask]
-
-def weighted_masked_similarity(user_pref, game_row, weights):
-    num = 0.0
-    denom_user = 0.0
-    denom_game = 0.0
-
-    for feature, target in user_pref.items():
-        if feature not in game_row:
-            continue
-        if np.isnan(game_row[feature]):
-            continue
-
-        w = weights.get(feature, 1.0)
-        gv = game_row[feature]
-
-        num += w * target * gv
-        denom_user += w * target * target
-        denom_game += w * gv * gv
-
-    if denom_user == 0 or denom_game == 0:
-        return np.nan
-
-    return num / (np.sqrt(denom_user) * np.sqrt(denom_game))
-
-def recommend_games(
-    user_pref,
-    game_features,
-    game_names,
-    constraints=None,
-    weights=None,
-    top_n=5
-):
-    df = game_features.copy()
-
-    if constraints:
-        df = apply_constraints(df, constraints)
-
-    scores = []
-
-    for name, game_row in df.iterrows():
-        score = weighted_masked_similarity(
-            user_pref,
-            game_row,
-            weights or {}
+    for game in scores_norm.index:
+        plt.text(
+            scores_norm.loc[game, "l1"] + 0.01,
+            scores_norm.loc[game, "l2"] + 0.01,
+            game,
+            fontsize=8
         )
-        if not np.isnan(score):
-            scores.append((game_names[name], score))
 
-    return (
-        pd.DataFrame(scores, columns=["game", "similarity"])
-        .set_index("game")
-        .sort_values("similarity", ascending=False)
-        .head(top_n)
-    )
+    plt.xlabel("L1 distance")
+    plt.ylabel("L2 distance")
+    plt.title("Metric disagreement: L1 vs L2")
+    plt.show()
 
-def generate_rec(user):
-    user_pref, constraints, weights = unpack_user_model(user)
+    # ----- "PCA vs Metric" -----
 
-    return recommend_games(
-        user_pref=user_pref,
-        game_features=features,
-        game_names=game_names,
-        constraints=constraints,
-        weights=weights,
-        top_n=5
-    )
+    from sklearn.decomposition import PCA
+
+    X = scores_norm[["penalized", "l1", "l2"]].values
+    X_pca = PCA(n_components=2).fit_transform(X)
+
+    plt.figure(figsize=(6,6))
+    plt.scatter(X_pca[:,0], X_pca[:,1])
+
+    for i, game in enumerate(scores_norm.index):
+        plt.text(X_pca[i,0], X_pca[i,1], game, fontsize=8)
+
+    plt.title("Metric Sensitivity Space")
+    plt.show()
+
+def plot_feature_contributions(game_name, user_model, top_k=8):
+    idx = game_names[game_names == game_name].index[0]
+    row = features.loc[idx]
+
+    pen = pd.Series(penalized_contributions(user_model, row))
+    l1  = pd.Series(l1_contributions(user_model, row))
+    l2  = pd.Series(l2_contributions(user_model, row))
+
+    df = pd.DataFrame({
+        "penalized": pen,
+        "l1": l1,
+        "l2": l2
+    }).fillna(0)
+
+    # Keep only relevant features
+    df["total"] = df.sum(axis=1)
+    df = df.sort_values("total", ascending=False).head(top_k)
+    df = df.drop(columns="total")
+
+    if df.sum().sum() == 0:
+        print("No significant contributions for this game.")
+        return
+
+    df.plot(kind="bar", figsize=(9, 4))
+    plt.title(f"Feature contribution by metric — {game_name}")
+    plt.ylabel("Distance contribution")
+    plt.xlabel("Feature")
+    plt.xticks(rotation=45, ha="right")
+    plt.tight_layout()
+    plt.show()
 
 # ----- "Main" -----
-game = "Guilty Gear Strive"
+game = "Fifa 26"
+user_model = users["The Horror Fan"]
 
-user_model = users["The Tryhard"]
-
+# Space Analysis
 #plot_space()
 #print(most_similar(game))
-print(generate_rec(user_model))
+
+# Metric Analysis
+#plot_disagreement()
+#plot_feature_contributions(game, user_model)
+
+# Recommendation
+print(recommend_games(user_pref=user_model, game_features=features, game_names=game_names, top_n=5))
+
 
