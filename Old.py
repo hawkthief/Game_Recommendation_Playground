@@ -6,6 +6,9 @@ from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics.pairwise import cosine_similarity
 
+Epsilon = 0.02
+Alpha = 1.5
+
 # ----- Users -----
 users = {
     
@@ -20,10 +23,8 @@ users = {
 
     "The Intellectual": {
         "strategic_depth":      {"min": 0.5, "target": 0.9, "weight": 1.0, "mode": "at_least"},
-        "build_variety":        {"target": 0.7, "weight": 0.8, "mode": "at_least"},
         "systemic_complexity":  {"min": 0.3, "target": 1.0, "weight": 1.0, "mode": "symmetric"},
-        "narrative_complexity":  {"min": 0.5, "target": 0.8, "weight": 0.6, "mode": "symmetric"},
-        "reflex_focus":     {"max": 0.6, "target": 0.2, "weight": 0.8, "mode": "symmetric"},
+        "narrative_complexity":  {"min": 0.5, "target": 0.8, "weight": 0.4, "mode": "symmetric"},
     },
 
     "The Casual": {
@@ -79,7 +80,7 @@ def most_similar(game_name, top_n=5):
     sims = sim_df.loc[game_name].sort_values(ascending=False)
     return sims.iloc[1:top_n+1]  # skip self
 
-def penalized_distance(user_spec, game_row, epsilon=0.05, alpha=3.0):
+def penalized_distance(user_spec, game_row, epsilon=Epsilon, alpha=Alpha):
     total = 0.0
 
     for f, rules in user_spec.items():
@@ -127,7 +128,7 @@ def l2_distance(user_spec, game_row):
 
     return np.sqrt(total)
 
-def penalized_contributions(user_spec, game_row, epsilon=0.05):
+def penalized_contributions(user_spec, game_row, epsilon=Epsilon):
     contribs = {}
 
     for f, rules in user_spec.items():
@@ -140,7 +141,8 @@ def penalized_contributions(user_spec, game_row, epsilon=0.05):
         g = game_row[f]
         w = rules["weight"]
 
-        delta = abs(g - t)
+        mode = rules.get("mode", "symmetric")
+        delta = directional_delta(g, t, mode)
         if delta > epsilon:
             contribs[f] = w * (delta - epsilon) ** 2
         else:
@@ -188,8 +190,8 @@ def recommend_games(
     rows = []
 
     for idx, row in games_df.iterrows():
-        if violates_hard_constraints(user_pref, row):
-            continue
+        #if violates_hard_constraints(user_pref, row):
+        #    continue
         
         rows.append({
             "game": game_names[idx],
@@ -198,7 +200,7 @@ def recommend_games(
             "l2": l2_distance(user_pref, row),
         })
 
-    res = pd.DataFrame(rows).set_index("game").sort_values(by="penalized", ascending=False).head(top_n)
+    res = pd.DataFrame(rows).set_index("game").sort_values(by="penalized", ascending=True).head(top_n)
     return res
 
 def violates_hard_constraints(user_spec, game_row):
@@ -216,9 +218,9 @@ def directional_delta(g, t, mode):
     if mode == "symmetric":
         return abs(g - t)
     elif mode == "at_most":
-        return max(0, t - g)
-    elif mode == "at_least":
         return max(0, g - t)
+    elif mode == "at_least":
+        return max(0, t - g)
 
 def violation_severity(delta, epsilon):
     return max(0, delta - epsilon)
@@ -304,7 +306,7 @@ def plot_feature_contributions(game_name, user_model, top_k=8):
 
     # Keep only relevant features
     df["total"] = df.sum(axis=1)
-    df = df.sort_values("total", ascending=False).head(top_k)
+    df = df.sort_values("total", ascending=False)
     df = df.drop(columns="total")
 
     if df.sum().sum() == 0:
@@ -320,8 +322,8 @@ def plot_feature_contributions(game_name, user_model, top_k=8):
     plt.show()
 
 # ----- "Main" -----
-game = "Fifa 26"
-user_model = users["The Horror Fan"]
+game = "Omega Strikers"
+user_model = users["The Explorer"]
 
 # Space Analysis
 #plot_space()
@@ -329,9 +331,9 @@ user_model = users["The Horror Fan"]
 
 # Metric Analysis
 #plot_disagreement()
-#plot_feature_contributions(game, user_model)
+plot_feature_contributions(game, user_model)
 
 # Recommendation
-print(recommend_games(user_pref=user_model, game_features=features, game_names=game_names, top_n=5))
+#print(recommend_games(user_pref=user_model, game_features=features, game_names=game_names, top_n=5))
 
 

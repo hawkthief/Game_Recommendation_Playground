@@ -5,13 +5,14 @@
     <ProjectGuid>a46959d0-0b51-446e-90b0-92a3e4596914</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>Python.py</StartupFile>
+    <StartupFile>main.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>RecommendationSystem</Name>
     <RootNamespace>Python</RootNamespace>
+    <IsWindowsApplication>False</IsWindowsApplication>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,10 +23,21 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Python.py" />
+    <Compile Include="core\__init__.py" />
+    <Compile Include="llm\conversation.py" />
+    <Compile Include="llm\__init__.py" />
+    <Compile Include="main.py" />
+    <Compile Include="Old.py" />
+    <Compile Include="core\recommender.py" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="games.csv" />
+    <Content Include=".env" />
+    <Content Include="data\games.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="data\" />
+    <Folder Include="core\" />
+    <Folder Include="llm\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
