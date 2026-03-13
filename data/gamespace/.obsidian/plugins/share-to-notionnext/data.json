@@ -1,0 +1,38 @@
+{
+  "NextButton": true,
+  "notionAPINext": "",
+  "databaseIDNext": "",
+  "bannerUrl": "",
+  "notionUser": "",
+  "NotionLinkDisplay": true,
+  "autoCopyNotionLink": true,
+  "autoSync": false,
+  "autoSyncDelay": 5,
+  "autoSyncSuccessNotice": false,
+  "autoSyncFrontmatterKey": "autosync-database",
+  "proxy": "",
+  "GeneralButton": true,
+  "tagButton": true,
+  "customTitleButton": false,
+  "customTitleName": "",
+  "notionAPIGeneral": "",
+  "databaseIDGeneral": "",
+  "CustomButton": false,
+  "CustomValues": "",
+  "notionAPICustom": "",
+  "databaseIDCustom": "",
+  "databaseDetails": {
+    "": {
+      "format": "general",
+      "fullName": "Dimensions",
+      "abName": "",
+      "notionAPI": "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",
+      "databaseID": "322a131995cf8008b1eee20ffb43dcf0?v=322a131995cf808f96a8000cd5df9534",
+      "tagButton": true,
+      "customTitleButton": false,
+      "customTitleName": "",
+      "customProperties": [],
+      "saved": true
+    }
+  }
+}

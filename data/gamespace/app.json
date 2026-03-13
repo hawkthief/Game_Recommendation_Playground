@@ -1,0 +1,15 @@
+{
+  "alwaysUpdateLinks": true,
+  "newFileLocation": "folder",
+  "newFileFolderPath": "Parameters",
+  "attachmentFolderPath": "./",
+  "useMarkdownLinks": false,
+  "showFrontmatter": true,
+  "foldHeading": false,
+  "foldIndent": false,
+  "showLineNumber": false,
+  "spellcheck": true,
+  "readableLineLength": true,
+  "strictLineBreaks": false,
+  "showUnsupportedFiles": false
+}
