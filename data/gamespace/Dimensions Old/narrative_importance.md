@@ -1,13 +1,13 @@
 ---
-parameter: hostility
+parameter: narrative_importance
 survival_rating: undecided
-tags: []
+tags:
 related_parameters: []
 collapse_candidate: false
 status: not-started
 ---
 
-# hostility
+# narrative_importance
 
 ## Current Definition
 <!-- What does this parameter measure? -->

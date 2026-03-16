@@ -1,13 +1,18 @@
 ---
-parameter: replayability
+parameter: difficulty
 survival_rating: undecided
-tags: []
-related_parameters: []
+tags:
+  - high-overlap
+related_parameters:
+  - "[[mechanical_depth]]"
+  - "[[reflex_focus]]"
+  - "[[systemic_complexity]]"
+  - "[[strategic_depth]]"
 collapse_candidate: false
 status: not-started
 ---
 
-# replayability
+# difficulty
 
 ## Current Definition
 <!-- What does this parameter measure? -->

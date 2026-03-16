@@ -1,13 +1,14 @@
 ---
-parameter: progression_speed
+parameter: reflex_focus
 survival_rating: undecided
-tags: []
-related_parameters: []
+tags:
+related_parameters:
+  - "[[difficulty]]"
 collapse_candidate: false
 status: not-started
 ---
 
-# progression_speed
+# reflex_focus
 
 ## Current Definition
 <!-- What does this parameter measure? -->

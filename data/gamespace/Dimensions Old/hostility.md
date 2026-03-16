@@ -1,13 +1,16 @@
 ---
-parameter: difficulty
+parameter: hostility
 survival_rating: undecided
-tags: []
-related_parameters: []
+tags:
+related_parameters:
+  - "[[setback]]"
+  - "[[darkness]]"
+  - "[[difficulty]]"
 collapse_candidate: false
 status: not-started
 ---
 
-# difficulty
+# hostility
 
 ## Current Definition
 <!-- What does this parameter measure? -->

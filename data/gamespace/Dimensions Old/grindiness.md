@@ -1,13 +1,18 @@
 ---
-parameter: worldbuilding
+parameter: grindiness
 survival_rating: undecided
-tags: []
-related_parameters: []
+tags:
+  - high-overlap
+related_parameters:
+  - "[[player_agency]]"
+  - "[[difficulty]]"
+  - "[[progression_speed]]"
+  - "[[loop_centrality]]"
 collapse_candidate: false
 status: not-started
 ---
 
-# worldbuilding
+# grindiness
 
 ## Current Definition
 <!-- What does this parameter measure? -->

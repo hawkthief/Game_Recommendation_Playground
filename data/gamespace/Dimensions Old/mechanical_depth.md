@@ -1,13 +1,15 @@
 ---
-parameter: narrative_complexity
+parameter: mechanical_depth
 survival_rating: undecided
-tags: []
-related_parameters: []
+tags:
+related_parameters:
+  - "[[difficulty]]"
+  - "[[systemic_complexity]]"
 collapse_candidate: false
 status: not-started
 ---
 
-# narrative_complexity
+# mechanical_depth
 
 ## Current Definition
 <!-- What does this parameter measure? -->

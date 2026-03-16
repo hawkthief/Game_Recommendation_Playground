@@ -1,13 +1,17 @@
 ---
-parameter: comedy
+parameter: build_variety
 survival_rating: undecided
-tags: []
-related_parameters: []
+tags:
+related_parameters:
+  - "[[strategic_depth]]"
+  - "[[systemic_complexity]]"
+  - "[[player_agency]]"
+  - "[[mechanical_depth]]"
 collapse_candidate: false
 status: not-started
 ---
 
-# comedy
+# build_variety
 
 ## Current Definition
 <!-- What does this parameter measure? -->

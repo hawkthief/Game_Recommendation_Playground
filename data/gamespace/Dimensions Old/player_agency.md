@@ -1,13 +1,15 @@
 ---
-parameter: Setback
+parameter: player_agency
 survival_rating: undecided
-tags: []
-related_parameters: []
+tags:
+related_parameters:
+  - "[[openness]]"
+  - "[[loop_centrality]]"
 collapse_candidate: false
 status: not-started
 ---
 
-# Setback
+# player_agency
 
 ## Current Definition
 <!-- What does this parameter measure? -->

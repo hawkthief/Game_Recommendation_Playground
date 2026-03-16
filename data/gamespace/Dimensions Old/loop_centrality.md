@@ -1,13 +1,16 @@
 ---
-parameter: strategic_depth
+parameter: loop_centrality
 survival_rating: undecided
-tags: []
-related_parameters: []
+tags:
+  - high-overlap
+related_parameters:
+  - "[[replayability]]"
+  - "[[grindiness]]"
 collapse_candidate: false
 status: not-started
 ---
 
-# strategic_depth
+# loop_centrality
 
 ## Current Definition
 <!-- What does this parameter measure? -->

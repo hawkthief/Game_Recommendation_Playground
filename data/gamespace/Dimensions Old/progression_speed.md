@@ -1,13 +1,15 @@
 ---
-parameter: player_agency
+parameter: progression_speed
 survival_rating: undecided
-tags: []
-related_parameters: []
+tags:
+related_parameters:
+  - "[[loop_centrality]]"
+  - "[[grindiness]]"
 collapse_candidate: false
 status: not-started
 ---
 
-# player_agency
+# progression_speed
 
 ## Current Definition
 <!-- What does this parameter measure? -->

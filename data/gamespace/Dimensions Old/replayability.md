@@ -1,13 +1,14 @@
 ---
-parameter: loop_centrality
+parameter: replayability
 survival_rating: undecided
-tags: []
-related_parameters: []
+tags:
+related_parameters:
+  - "[[progression_speed]]"
 collapse_candidate: false
 status: not-started
 ---
 
-# loop_centrality
+# replayability
 
 ## Current Definition
 <!-- What does this parameter measure? -->

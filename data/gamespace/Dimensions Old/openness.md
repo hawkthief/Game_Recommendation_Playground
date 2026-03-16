@@ -1,13 +1,17 @@
 ---
-parameter: grindiness
+parameter: openness
 survival_rating: undecided
-tags: []
-related_parameters: []
+tags:
+related_parameters:
+  - "[[player_agency]]"
+  - "[[loop_centrality]]"
+  - "[[grindiness]]"
+  - "[[progression_speed]]"
 collapse_candidate: false
 status: not-started
 ---
 
-# grindiness
+# openness
 
 ## Current Definition
 <!-- What does this parameter measure? -->

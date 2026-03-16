@@ -1,8 +1,11 @@
 ---
 parameter: darkness
 survival_rating: undecided
-tags: []
-related_parameters: []
+tags:
+related_parameters:
+  - "[[narrative_complexity]]"
+  - "[[narrative_importance]]"
+  - "[[hostility]]"
 collapse_candidate: false
 status: not-started
 ---

@@ -1,13 +1,15 @@
 ---
-parameter: drama
+parameter: narrative_complexity
 survival_rating: undecided
-tags: []
-related_parameters: []
+tags:
+related_parameters:
+  - "[[narrative_importance]]"
+  - "[[drama]]"
 collapse_candidate: false
 status: not-started
 ---
 
-# drama
+# narrative_complexity
 
 ## Current Definition
 <!-- What does this parameter measure? -->

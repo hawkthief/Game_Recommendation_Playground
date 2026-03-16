@@ -1,13 +1,15 @@
 ---
-parameter: mechanical_depth
+parameter: strategic_depth
 survival_rating: undecided
-tags: []
-related_parameters: []
+tags:
+related_parameters:
+  - "[[systemic_complexity]]"
+  - "[[difficulty]]"
 collapse_candidate: false
 status: not-started
 ---
 
-# mechanical_depth
+# strategic_depth
 
 ## Current Definition
 <!-- What does this parameter measure? -->

@@ -1,10 +1,9 @@
 ---
-parameter: 
+parameter:
 survival_rating: undecided
 tags: []
 related_parameters: []
 collapse_candidate: false
-status: not-started
 ---
 
 # {{PARAMETER_NAME}}

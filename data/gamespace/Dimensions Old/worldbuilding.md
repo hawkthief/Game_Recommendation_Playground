@@ -1,13 +1,13 @@
 ---
-parameter: systemic_complexity
+parameter: worldbuilding
 survival_rating: undecided
-tags: []
+tags:
 related_parameters: []
 collapse_candidate: false
 status: not-started
 ---
 
-# systemic_complexity
+# worldbuilding
 
 ## Current Definition
 <!-- What does this parameter measure? -->

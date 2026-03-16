@@ -1,13 +1,15 @@
 ---
-parameter: build_variety
+parameter: drama
 survival_rating: undecided
-tags: []
-related_parameters: []
+tags:
+related_parameters:
+  - "[[narrative_importance]]"
+  - "[[narrative_complexity]]"
 collapse_candidate: false
 status: not-started
 ---
 
-# build_variety
+# drama
 
 ## Current Definition
 <!-- What does this parameter measure? -->

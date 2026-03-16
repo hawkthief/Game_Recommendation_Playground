@@ -1,13 +1,15 @@
 ---
-parameter: reflex_focus
+parameter: Setback
 survival_rating: undecided
-tags: []
-related_parameters: []
+tags:
+related_parameters:
+  - "[[grindiness]]"
+  - "[[hostility]]"
 collapse_candidate: false
 status: not-started
 ---
 
-# reflex_focus
+# Setback
 
 ## Current Definition
 <!-- What does this parameter measure? -->

@@ -1,13 +1,13 @@
 ---
-parameter: narrative_importance
+parameter: systemic_complexity
 survival_rating: undecided
-tags: []
-related_parameters: []
+tags:
+related_parameters:
 collapse_candidate: false
 status: not-started
 ---
 
-# narrative_importance
+# systemic_complexity
 
 ## Current Definition
 <!-- What does this parameter measure? -->
